@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VENÜS - Kızlar Kulübü</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#fafafa;padding-bottom:70px}
+#kapi{position:fixed;top:0;left:0;right:0;bottom:0;background:#6d0a1f;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:25px;text-align:center;color:white}
+#kapi h1{font-size:42px;font-family:Georgia;margin-bottom:10px}
+#kapi p{font-size:14px;line-height:1.6;opacity:.9}
+#kapi input{width:90%;max-width:300px;padding:14px;border-radius:25px;border:none;margin-top:18px;text-align:center;font-size:16px}
+#kapi button{background:white;color:#6d0a1f;border:none;padding:13px 25px;border-radius:25px;margin-top:12px;font-weight:bold;font-size:15px}
+.kutu{background:rgba(255,255,255,.15);padding:14px;border-radius:16px;margin-top:18px;font-size:13px;line-height:1.6;text-align:left}
+.ust{position:sticky;top:0;background:white;display:flex;justify-content:space-between;align-items:center;padding:12px 15px;border-bottom:1px solid #ddd;z-index:10}
+.logo{font-size:28px;font-weight:bold;font-family:Georgia;color:#6d0a1f}
+.oyunlar{padding:12px}
+.oyunlar h3{font-size:16px;color:#6d0a1f;margin-bottom:10px}
+.oyun-kart{background:white;border:1px solid #eee;border-radius:16px;padding:14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.oyun-kart b{font-size:15px}
+.oyun-kart p{font-size:12px;color:#666;margin-top:4px}
+.oyna{background:#6d0a1f;color:white;border:none;padding:8px 14px;border-radius:20px}
+#oyunSonuc{background:#ffeef5;border-radius:14px;padding:14px;margin:0 12px 10px;text-align:center;font-weight:bold;color:#6d0a1f;display:none}
+#oyunSonuc input{width:90%;padding:10px;border-radius:20px;border:1px solid #ffc2d9;margin-top:10px;text-align:center}
+.gonderi{background:white;border:1px solid #ddd;margin:10px 0}
+.gonderi-ust{display:flex;align-items:center;gap:10px;padding:10px}
+.pp{width:38px;height:38px;border-radius:50%;background:#6d0a1f;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.foto{height:280px;background:#e8c9c9;display:flex;align-items:center;justify-content:center;font-size:18px;color:#6d0a1f;text-align:center;padding:20px}
+.butonlar{display:flex;gap:15px;padding:10px;font-size:22px}
+.aciklama{padding:0 10px 12px;font-size:14px;line-height:1.5}
+.yorum{padding:0 10px 10px;font-size:13px;color:#555}
+.paylas{background:white;padding:15px;border:1px solid #ddd;margin:10px;border-radius:16px}
+.paylas input{width:100%;padding:12px;border:1px solid #ddd;border-radius:20px;margin-top:10px}
+.paylas select{width:100%;padding:12px;border:1px solid #ffc2d9;border-radius:20px;margin-top:10px;background:#fff5f8;font-weight:bold;color:#6d0a1f}
+.btn{background:#6d0a1f;color:white;border:none;padding:10px 18px;border-radius:20px;margin-top:10px}
+.kim{font-size:11px;background:#ffeef5;color:#6d0a1f;padding:3px 8px;border-radius:10px;display:inline-block;margin-top:3px}
+.alt{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;display:flex;justify-content:space-around;padding:12px;font-size:22px}
+</style>
+</head>
+<body>
+
+<div id="kapi">
+<h1>VENÜS 💖</h1>
+<p><b>Sadece Kızlar Kulübü</b><br>Bu alan sadece kızlar içindir.</p>
+<div class="kutu">
+✅ Ben kızım<br>
+✅ Kızlar Kulübü kurallarına uyacağım<br>
+✅ Kimsenin fotoğrafını izinsiz paylaşmayacağım<br>
+✅ Şifreyi erkeklerle paylaşmayacağım
+</div>
+<input id="sifre" type="password" placeholder="Kızlar Kulübü Şifresi">
+<button onclick="gir()">VENÜS'e Gir 💖</button>
+<p id="hata" style="color:#ffd6e0;margin-top:10px;display:none">Şifre yanlış canım, tekrar dene 🥺</p>
+<p style="font-size:11px;margin-top:12px;opacity:.7">Şifre: VENUSKIZLAR</p>
+</div>
+
+<script>
+function gir(){
+let s=document.getElementById('sifre').value;
+if(s=="VENUSKIZLAR" || s=="venuskizlar"){
+document.getElementById('kapi').style.display='none';
+} else {
+document.getElementById('hata').style.display='block';
+}
+}
+let puan=0;
+function oyna(tur){
+let s=document.getElementById('oyunSonuc'); s.style.display='block';
+if(tur=='bumu'){let a=["Kahve mi Çay mı? ☕🍵","Dizi mi Film mi? 🎬","Deniz mi Havuz mu? 🌊","Kedi mi Köpek mi? 🐱🐶","Gece mi Gündüz mü? 🌙☀️"]; s.innerHTML=a[Math.floor(Math.random()*a.length)]+"<br><br><button class='oyna' onclick=\"alert('Oy kullandın 💖')\">Oy Ver</button>";}
+if(tur=='dogruluk'){let a=["Doğruluk: En son kime gizli gizli baktın? 👀","Cesaret: En yakın arkadaşını ara ve seni seviyorum de 💖","Doğruluk: Hiç bir sırrı sakladın mı?","Cesaret: En sevdiğin şarkıyı sesli söyle 🎤"]; s.innerHTML=a[Math.floor(Math.random()*a.length)];}
+if(tur=='kimdaha'){let a=["Kim daha çok uyur? 😴","Kim daha komik? 😂","Kim daha çok alışveriş yapar? 🛍️","Kim daha çok yemek yer? 🍕","Kim daha duygusal? 🥹"]; s.innerHTML=a[Math.floor(Math.random()*a.length)]+"<br><br>Arkadaşını etiketle! 👇";}
+if(tur=='anket'){s.innerHTML="Bugün ne yapalım?<br><br>🎬 Film gecesi<br>☕ Kahve + Dedikodu<br>🛍️ Alışveriş<br>🏠 Evde pijama partisi";}
+if(tur=='kelime'){
+let harfler=["A","S","K","M","E","V","N","Z","D","G"];
+let harf=harfler[Math.floor(Math.random()*harfler.length)];
+s.innerHTML="🔤 <b>"+harf+"</b> harfiyle başlayan bir kız ismi yaz!<br><input id='kelimeInput' placeholder='Örn: "+harf+" ile başlayan isim...'><br><br><button class='oyna' onclick=\"kelimeKontrol('"+harf+"')\">Gönder</button><br><br>Puanın: "+puan+" ⭐";
+}
+}
+function kelimeKontrol(harf){
+let v=document.getElementById('kelimeInput').value.trim();
+if(!v){alert("Önce bir kelime yaz 💖"); return;}
+if(v[0].toUpperCase()==harf){puan+=10; alert("Aferin! +10 puan 🎉 Puanın: "+puan);} else {alert("Olmadi, "+harf+" ile başlamalı 😅");}
+oyna('kelime');
+}
+</script>
+
+<div class="ust"><div class="logo">VENÜS</div><div>💌 🔔 👩</div></div>
+
+<div class="oyunlar"><h3>🎮 VENÜS Oyunları</h3>
+<div class="oyun-kart"><div><b>💖 Bu Mu Şu Mu?</b><p>Arkadaşlarınla oylayın</p></div><button class="oyna" onclick="oyna('bumu')">Oyna</button></div>
+<div class="oyun-kart"><div><b>😈 Doğruluk mu Cesaret mi?</b><p>Grupça en eğlencelisi</p></div><button class="oyna" onclick="oyna('dogruluk')">Oyna</button></div>
+<div class="oyun-kart"><div><b>👭 Kim Daha...?</b><p>Kim daha çok uyur?</p></div><button class="oyna" onclick="oyna('kimdaha')">Oyna</button></div>
+<div class="oyun-kart"><div><b>🔤 Kelime Oyunu</b><p>Harfle kelime bul, yarış!</p></div><button class="oyna" onclick="oyna('kelime')">Oyna</button></div>
+<div class="oyun-kart"><div><b>📊 Anket Oyunu</b><p>Bugün ne yapalım?</p></div><button class="oyna" onclick="oyna('anket')">Oyna</button></div>
+</div>
+<div id="oyunSonuc"></div>
+
+<div class="paylas">
+<b>Ne düşünüyorsun? 💭</b>
+<input placeholder="Bugün nasılsın? Yaz...">
+<p style="font-size:13px;margin-top:12px"><b>👀 Bunu kim görsün?</b></p>
+<select>
+<option>🌍 Herkes görsün</option>
+<option>👥 Sadece takipçilerim görsün</option>
+<option>💖 Sadece yakın arkadaşlarım görsün</option>
+<option>🔒 Sadece ben göreyim</option>
+<option>🚫 Takipçim olmayanlar görmesin</option>
+</select>
+<br><button class="btn">Paylaş</button> <button class="btn">📸 Fotoğraf</button> <button class="btn">🎥 Video</button>
+</div>
+
+<div class="gonderi">
+<div class="gonderi-ust"><div class="pp">Z</div><div><b>@zeynep</b><br><span class="kim">👥 Sadece takipçiler görüyor</span></div></div>
+<div class="foto">🔒 Fotoğraf<br>sadece takipçilere görünür</div>
+<div class="butonlar"><span>❤️</span><span>💬</span><span>↗️</span><span style="margin-left:auto">🔖</span></div>
+<div class="aciklama"><b>@zeynep</b> Kızlar kelime oyununda 50 puan yaptım, geçebilen var mı? 🔤✨</div>
+<div class="yorum"><b>@elif:</b> Ben 70 yaptım 😂</div>
+</div>
+
+<div class="alt"><span>🏠</span><span>🔍</span><span>➕</span><span>🎬</span><span>👩</span></div>
+</body>
+</html>
